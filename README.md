@@ -13,11 +13,11 @@
   MongoDB 
 	
 
-# Install the distributed crawling infrastructure within the AWS cloud infrastructure.
+Install the distributed crawling infrastructure within the AWS cloud infrastructure.
 
      Repo : https://github.com/NikolaiT/Crawling-Infrastructure
 
-# Start a crawl task that will crawl the Html of the top 10.000 websites and store the cleaned Html documents on s3.For the top 10k websites, we use the scientific tranco list
+    // Start a crawl task that will crawl the Html of the top 10.000 websites and store the cleaned Html documents on s3.For the top 10k websites, we use the scientific tranco list
 
 # Setting up the infrastructure :
 
