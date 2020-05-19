@@ -93,11 +93,28 @@ fillup the Creads in : master/env/skeleton_production.env and update & modify th
 rename the file from master/env/skeleton_production.env to master/env/production.env
 
 create an empty master/env/development.env  // . It is required by docker swarm.
- Now Execute
-  #cd master
-  #./deploy/deploy.sh deploy
-  #node ctrl.js --action cfg --what create
-  #./deploy/test.sh
+Now Execute
+  cd master
+  ./deploy/deploy.sh deploy
+The above command will compile the source code locally and deploy to the remote server and initialize a docker swarm there.
+
+Now we have to create a default configuration on master server with the following commands:  
+  node ctrl.js --action cfg --what create
+  
+You can test if deployment was successful by executing the following command:
+
+$ ./deploy/test.sh
+https://34.193.81.78:9001/
+{
+  "scheduler_uptime": "",
+  "scheduler_version": "v1.3",
+  "api_version": "1.0.2",
+  "machines_allocated": 0,
+  "http_machines_allocated": 0,
+  "num_total_items": 0,
+  "num_tasks": 0
+
+You will Get the OutPut like this.
 
 Note : Make Sure Successfully Run this commands.
 
@@ -106,21 +123,21 @@ Deploying the crawler to AWS Lambda
 
 
 Switch to crawler Dir
- #sudo npm install -g serverless
- #sudo npm install -g typescript
- #crawler/deploy_all.js  [[ change your region where you want to deploy your Lambda Function
+ sudo npm install -g serverless
+ sudo npm install -g typescript
+ crawler/deploy_all.js  [[ change your region where you want to deploy your Lambda Function
 
 After that we have to actually create S3 buckets on those regions, otherwise our crawled data could not be correctly stored. You can create AWS buckets programmatically with the script scripts/create_buckets.sh with the command:
 
- #./scripts/create_buckets.sh
+ ./scripts/create_buckets.sh
 
 Now that we have created those buckets, it's time to update the available regions on our master server. We change the directory to master/ and issue the following commands:
 
- #cd master;
+  cd master;
 
- #export $(grep -v '^#' env/production.env | xargs -0);
+  export $(grep -v '^#' env/production.env | xargs -0);
 
- #node ctrl.js --action cfg --what update_functions
+  node ctrl.js --action cfg --what update_functions
 
 Now the master server has the correct functions configured.
 
@@ -129,16 +146,16 @@ After those steps, it's finally time to upload our crawling code to AWS Lambda.
 We can do this with the following commands:
 
 change back to worker directory
- #cd ../crawler;
+  cd ../crawler;
 
- #export $(grep -v '^#' env/crawler.env | xargs -0);
- copy file from Crawling-Infrastructure/crawler/env/[.env] to Crawling-Infrastructure/crawler/crawler.env
+  export $(grep -v '^#' env/crawler.env | xargs -0);
+   // copy file from Crawling-Infrastructure/crawler/env/[.env] to Crawling-Infrastructure/crawler/crawler.env
 
- #node deploy_all.js worker
+  node deploy_all.js worker
 
 Configure the Master server
 
- #./launch_frontend_interface.sh
+  ./launch_frontend_interface.sh
 
 
 
