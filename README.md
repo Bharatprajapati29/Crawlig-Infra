@@ -90,10 +90,12 @@ Now we are ready to install & compile the project locally:
 
      cd master/
      npm install
-   # switch to the library and install and compile it first!
+     
+     //  switch to the library and install and compile it first!
      cd ../lib/
      tsc
-   # go back to the master and compile it
+     
+     // go back to the master and compile it
      cd ../master/
      tsc
 
