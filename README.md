@@ -2,11 +2,15 @@
 
 # What We Need
 
-  AWS CLOUD-SERVER	
+  AWS CLOUD-SERVER
+  
   AWS Lambda as a crawling backend
+  
   AWS S3 to store crawled Html data
+  
   An AWS EC2 instance used as a master server that schedules the crawl task and hosts the mongodb that we use a queue
-  MongoDB
+  
+  MongoDB 
 	
 # How to Deploy
 
