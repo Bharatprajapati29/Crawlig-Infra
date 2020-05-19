@@ -86,22 +86,29 @@ Configure AWS-CLI
      git clone https://github.com/NikolaiT/Crawling-Infrastructure.git
      cd Crawling-Infrastructure/
      sudo npm install -g typescript
+Now we are ready to install & compile the project locally:
 
-	// Follow the Step Which Is Given In REPO.//
+     cd master/
+     npm install
+   # switch to the library and install and compile it first!
+     cd ../lib/
+     tsc
+   # go back to the master and compile it
+     cd ../master/
+     tsc
 
 After that step, the crawling infrastructure should be compiled successfully.
 
 Deploy the Master server
 
-Configure This File :	master/deploy/env/deploy.env  [[ change IP / path to .PEM file / and do what other changes required. ]]
+Configure and Update this File :	master/deploy/env/deploy.env  [[ change IP / path to .PEM file / and do what other changes required. ]]
 
-After Updating This File
 
-# fillup the Creads in : master/env/skeleton_production.env and update & modify the missing parameters.
+fillup the Creads in : master/env/skeleton_production.env and update & modify the missing parameters.
 
-# rename the file from master/env/skeleton_production.env to master/env/production.env
+rename the file from master/env/skeleton_production.env to master/env/production.env
 
-# create an empty master/env/development.env  // . It is required by docker swarm.
+create an empty master/env/development.env  // . It is required by docker swarm.
   
      Excute Commands:
      cd master
@@ -163,10 +170,11 @@ change back to worker directory:
       cd ../crawler;
       export $(grep -v '^#' env/crawler.env | xargs -0);
      // copy file from Crawling-Infrastructure/crawler/env/[.env] to Crawling-Infrastructure/crawler/crawler.env
-     node deploy_all.js worker
+      node deploy_all.js worker
 
-Configure the Master server
+Configure the Master server : 
 
+     cd master/
     ./launch_frontend_interface.sh
 
 
