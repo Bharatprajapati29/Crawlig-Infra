@@ -1,4 +1,5 @@
 # Crawlig-Infra
+
 What We Need
 
 AWS CLOUD-SERVER	
@@ -7,11 +8,10 @@ AWS S3 to store crawled Html data
 An AWS EC2 instance used as a master server that schedules the crawl task and hosts the mongodb that we use a queue
 MongoDB
 	
-
-
 How to Deploy
 
 Install the distributed crawling infrastructure within the AWS cloud infrastructure.
+Repo : https://github.com/NikolaiT/Crawling-Infrastructure
 
 Start a crawl task that will crawl the Html of the top 10.000 websites and store the cleaned Html documents on s3.
 
@@ -37,14 +37,16 @@ Create IAM-user With cli-access and attach policies s3,IAM,Cloudformation,Lambda
 
 Connect EC2
 Configure AWS-CLI
+
+// REF : Install Docker == https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
+// REF : Installing nodejs, yarn and typescript on the server == https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/
+
+     Excute Commands : 
      sudo apt install apt-transport-https ca-certificates curl software-properties-common
      curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
      sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu 
      sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
      sudo apt update
-==================================================================================================================================
-	// REF : Install Docker == https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
-==================================================================================================================================
      sudo apt install docker-ce -y
      sudo systemctl status docker
      sudo usermod -aG docker ${USER}   
@@ -55,9 +57,6 @@ Configure AWS-CLI
      systemctl status docker.service 
      sudo usermod -aG docker ubuntu  // Add Manually userName
      id
-==================================================================================================================================
-// REF : Installing nodejs, yarn and typescript on the server == https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/
-==================================================================================================================================
      curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
      sudo apt-get install -y nodejs
      node --version
@@ -70,9 +69,10 @@ Configure AWS-CLI
      echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
      sudo apt update && sudo apt install yarn
      yarn --version
-=========================================
+     
+
 Clone the project and install & compile
-=========================================
+
 
      git clone https://github.com/NikolaiT/Crawling-Infrastructure.git
      cd Crawling-Infrastructure/
@@ -82,9 +82,7 @@ Clone the project and install & compile
 
 After that step, the crawling infrastructure should be compiled successfully.
 
-=========================================
 Deploy the Master server
-=========================================
 
 Configure This File :	master/deploy/env/deploy.env  [[ change IP / path to .PEM file / and do what other changes required. ]]
 
@@ -103,9 +101,9 @@ create an empty master/env/development.env  // . It is required by docker swarm.
 
 Note : Make Sure Successfully Run this commands.
 
-=========================================
+
 Deploying the crawler to AWS Lambda
-=========================================
+
 
 Switch to crawler Dir
  #sudo npm install -g serverless
