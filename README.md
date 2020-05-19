@@ -36,7 +36,7 @@ Deploying the crawler to AWS Lambda
 
 Create Cluster In MongoDB
 
-Create Database user and noteDown in MongoDB-SRV
+Create Database admin user and noteDown MongoDB-SRV
 
 Configure Security Group in AWS
 
