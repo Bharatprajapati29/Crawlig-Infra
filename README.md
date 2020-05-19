@@ -1,14 +1,14 @@
 # Crawlig-Infra
 
-What We Need
+# What We Need
 
-AWS CLOUD-SERVER	
-AWS Lambda as a crawling backend
-AWS S3 to store crawled Html data
-An AWS EC2 instance used as a master server that schedules the crawl task and hosts the mongodb that we use a queue
-MongoDB
+  AWS CLOUD-SERVER	
+  AWS Lambda as a crawling backend
+  AWS S3 to store crawled Html data
+  An AWS EC2 instance used as a master server that schedules the crawl task and hosts the mongodb that we use a queue
+  MongoDB
 	
-How to Deploy
+# How to Deploy
 
 Install the distributed crawling infrastructure within the AWS cloud infrastructure.
 Repo : https://github.com/NikolaiT/Crawling-Infrastructure
